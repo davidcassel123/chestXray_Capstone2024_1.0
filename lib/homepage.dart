@@ -13,9 +13,9 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-bool _loading;
-File _image;
-List _output;
+late bool _loading;
+late File _image;
+late List _output;
 final _imagePicker = ImagePicker();
 
 @override
@@ -31,10 +31,14 @@ final _imagePicker = ImagePicker();
   }
   
   loadModel() async {
+    final stopwatch = Stopwatch()..start();
+    print('started loading-----------');
     await Tflite.loadModel(
       model: "assets/model_unquant.tflite",
       labels: "assets/labels.txt",
       numThreads: 1);
+    stopwatch.stop();
+    print('Model loaded in ${stopwatch.elapsedMilliseconds} ms');
   }
 
   pickImage() async {
@@ -69,7 +73,7 @@ final _imagePicker = ImagePicker();
 
       setState(() {
         _loading = false;
-        _output = output;
+        _output = output!;
       });
   }
 

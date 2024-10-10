@@ -19,18 +19,40 @@ class _LanguageState extends State<Language> {
     ),
     body:Column(children:[
       Expanded(child: _buildList(),),
-            
-            Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: FlatButton(
-                minWidth: 200,
-                height: 70,
-                color: Colors.white,
-                onPressed: () { Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => FirstScreen()));},
-               child: Text('Next',style: TextStyle(color:Colors.blue,fontSize: 20),)),
-            )
+
+      //chat gpt conversation https://chatgpt.com/share/670756f2-6f94-800f-8e68-8d93a02cb2c6
+
+      Padding(
+        padding: const EdgeInsets.all(40.0),
+        child: TextButton(
+          style: TextButton.styleFrom(
+            minimumSize: Size(200, 70),       // Sets minWidth: 200, height: 70
+            backgroundColor: Colors.white,    // Sets the background color
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FirstScreen()),
+            );
+          },
+          child: Text(
+            'Next',
+            style: TextStyle(color: Colors.blue, fontSize: 20),  // Sets text style
+          ),
+        ),
+      )
+
+            // Padding(
+            //   padding: const EdgeInsets.all(40.0),
+            //   child: FlatButton(
+            //     minWidth: 200,
+            //     height: 70,
+            //     color: Colors.white,
+            //     onPressed: () { Navigator.push(
+            //             context,
+            //             MaterialPageRoute(builder: (context) => FirstScreen()));},
+            //    child: Text('Next',style: TextStyle(color:Colors.blue,fontSize: 20),)),
+            // )
            
     ])
            
