@@ -34,9 +34,9 @@ final _imagePicker = ImagePicker();
     final stopwatch = Stopwatch()..start();
     print('started loading-----------');
     await Tflite.loadModel(
-      model: "assets/model_unquant.tflite",
+      model: "assets/model_quant.tflite",
       labels: "assets/labels.txt",
-      numThreads: 1);
+      numThreads: 8);
     stopwatch.stop();
     print('Model loaded in ${stopwatch.elapsedMilliseconds} ms');
   }
@@ -64,7 +64,7 @@ final _imagePicker = ImagePicker();
   classifyImage(File image) async {
     var output = await Tflite.runModelOnImage(
       path: image.path,
-      numResults: 2,
+      numResults: 21,
       threshold: 0.5,
       imageMean: 127.5,
       imageStd: 127.5,
